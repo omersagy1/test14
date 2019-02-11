@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, Dispatch } from 'redux';
 import { Provider } from 'react-redux';
 
-import { Model, Action, update, inc, dec } from './model';
+import { Model, Action, update } from './model';
 import { connect } from 'react-redux';
 
 
@@ -21,8 +21,7 @@ export const mapStateToProps = (m: Model) => {
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action> ) => {
   return {
-    increment: () => dispatch(inc()),
-    decrement: () => dispatch(dec()),
+    update: (action: Action) => () => dispatch(action),
   }
 }
 

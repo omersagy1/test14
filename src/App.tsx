@@ -3,16 +3,15 @@ import './App.css';
 
 import logo from './logo.svg';
 
-import { Model } from './model';
+import { Model, Action, inc, dec } from './model';
 
 
-export interface Props {
+export interface AppProps {
   model: Model;
-  increment: () => void;
-  decrement: () => void;
+  update: (action: Action) => () => void;
 }
 
-const App = (props: Props | null) => {
+const App = (props: AppProps | null) => {
 
   if (props == null) {
     return <div> errored! </div>
@@ -30,8 +29,8 @@ const App = (props: Props | null) => {
       <Tile />
       <Tile extra={"tile2"}/>
       <div> {props.model.count} </div>
-      <div onClick={props.increment}> inc </div>
-      <div onClick={props.decrement}> dec </div>
+      <div onClick={props.update(inc())}> inc </div>
+      <div onClick={props.update(dec())}> dec </div>
     </div>
   );
 }

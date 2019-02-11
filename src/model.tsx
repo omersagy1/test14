@@ -24,13 +24,13 @@ export interface Dec {
 
 export const inc = (): Inc => {
   return {
-      type: INC
+    type: INC
   }
 }
 
 export const dec = (): Dec => {
   return {
-      type: DEC
+    type: DEC
   }
 }
 
